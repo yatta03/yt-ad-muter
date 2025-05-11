@@ -29,7 +29,7 @@ function checkAd() {
 
     // skip if skippable
     if (autoSkip) {
-      const skipBtn = document.querySelector('.ytp-ad-skip-button.ytp-button');
+      const skipBtn = document.querySelector('.ytp-skip-ad-button');
       if (skipBtn) {
         skipBtn.click();
         console.log("ad skip");
