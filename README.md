@@ -9,4 +9,4 @@ on Youtute
 
 ---
 
-since auto-skipping ad may potentially violates Youtube terms of services, this project should only serve as learning purpose.
+the skip function doesn't work for me, but possibly works on other computer/account (?

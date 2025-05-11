@@ -1,16 +1,21 @@
 let video;
 let isMuted = false;
 let autoSkip = false;
+let autoMute = true;
 
-// Load skip preference from storage
-chrome.storage.sync.get(['autoSkip'], (result) => {
+// Load preference setting from storage
+chrome.storage.sync.get(['autoSkip', 'autoMute'], (result) => {
   autoSkip = result.autoSkip ?? false;
+  autoMute = result.autoMute ?? true;
 });
 
 // Listen for changes to the setting in real time
 chrome.storage.onChanged.addListener((changes, area) => {
   if (area === 'sync' && 'autoSkip' in changes) {
     autoSkip = changes.autoSkip.newValue;
+  }
+  if (area == 'sync' && 'autoMute' in changes) {
+    autoMute = changes.autoMute.newValue;
   }
 });
 
@@ -19,9 +24,9 @@ function checkAd() {
   if (!video) return;
 
   const adContainer = document.querySelector('.ad-showing');
-  if (adContainer) {
+  if (adContainer && (autoMute || autoSkip)) {
     // mute if video is unmuted
-    if (!video.muted) {
+    if (!video.muted && autoMute) {
       video.muted = true;
       isMuted = true;
       console.log("ad detected, muted");
@@ -30,9 +35,10 @@ function checkAd() {
     // skip if skippable
     if (autoSkip) {
       const skipBtn = document.querySelector('.ytp-skip-ad-button');
-      if (skipBtn) {
+      if (skipBtn && skipBtn.offsetParent !== null) {
+        // not work if isTrusted is tested
         skipBtn.click();
-        console.log("ad skip");
+        console.log("skip btn show, ad skip");
       }
     }
 
