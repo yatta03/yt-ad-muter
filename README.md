@@ -20,4 +20,8 @@ click icon to toggle mute and skip ad function
 
 ---
 
+## future plan
+
+- work on Youtube Music
+
 the skip function doesn't work for me, and making it work is currently beyond my capability, maybe fix it someday...
