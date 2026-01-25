@@ -3,7 +3,7 @@
 ![icon](./extension/images/icon_128.svg)  
 it's a google extension that do:
 
-on Youtute (and only on Youtube)
+on Youtute and Youtube Music (and only on those two website)
 
 - mute ad if detected
 - skip ad if the ad is skippable and auto-skip option is set to True
@@ -22,7 +22,6 @@ click icon to toggle mute and skip ad function
 
 ## future plan
 
-- work on Youtube Music
 - fix the skip if possible
 
 the skip function doesn't work for me, and making it work is currently beyond my capability, maybe fix it someday...
