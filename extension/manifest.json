@@ -1,0 +1,23 @@
+{
+  "manifest_version": 3,
+  "name": "Youtube ad muter",
+  "description": "Automactically mute Youtube ad, skip the ad if skippable.",
+  "version": "0.0.1",
+  "permissions": ["storage", "scripting"],
+  "host_permissions": ["https://www.youtube.com/*"],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": "images/icon_48.png"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://www.youtube.com/*", "https://music.youtube.com/*"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "icons": {
+    "128": "images/icon_128.png",
+    "48": "images/icon_48.png"
+  }
+}
